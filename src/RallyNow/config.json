@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "RallyNow"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-RallyNow-e9651ffe-ae36-4261-897d-8c8dcc57609a;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

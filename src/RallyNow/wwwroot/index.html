@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="rtApp">
+<head>
+    <meta charset="utf-8" />
+    <title>List of Activities</title>
+
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/controllers/activitiesController.js"></script>
+    <script src="app/services/activitiesService.js"></script>
+
+</head>
+<body ng-cloak>
+    <div ng-controller="activitiesController">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>ActivityType</th>
+                    <th>MessageSource</th>
+                    <th>Action</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="activity in activities">
+                    <td>{{activity.Id}}</td>
+                    <td>{{activity.ActivityType}}</td>
+                    <td>{{activity.MessageSource}}</td>
+                    <td>{{activity.Action}}</td>
+                    <td>{{activity.Message}}</td>
+                    <td>{{activity.Date|date:"dd/MM/yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
