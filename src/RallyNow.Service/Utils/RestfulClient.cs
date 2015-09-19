@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RallyNow.Service.Utils;
 using RestSharp;
 
@@ -43,6 +44,23 @@ namespace RallyNow.Service.Utils
 
             return response;
         }
+
+        public IRestfulResponse FormPost(string uri, IDictionary<string, string> parameters)
+        {
+            var request = new RestRequest(uri, Method.POST);
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            foreach (var parameter in parameters)
+            {
+                request.AddParameter(parameter.Key, parameter.Value);
+            }
+
+            var response = new RestfulResponse(_client.Execute(request), uri);
+            if(!response.IsStatusOk)
+                LogError(response);
+
+            return response;
+        }
+
 
         private void LogError(IRestfulResponse response)
         {

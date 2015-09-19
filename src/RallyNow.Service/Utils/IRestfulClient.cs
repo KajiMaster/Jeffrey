@@ -1,4 +1,5 @@
-﻿using RallyNow.Service.Utils;
+﻿using System.Collections.Generic;
+using RallyNow.Service.Utils;
 
 namespace RallyNow.Service.Utils
 {
@@ -7,5 +8,6 @@ namespace RallyNow.Service.Utils
         IRestfulResponse Get(string uri);
         IRestfulResponse Put(string uri, object obj);
         IRestfulResponse Post(string uri, object obj);
+        IRestfulResponse FormPost(string uri, IDictionary<string, string> parameters);
     }
 }
