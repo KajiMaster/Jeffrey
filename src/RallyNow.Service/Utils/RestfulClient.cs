@@ -1,7 +1,8 @@
 ﻿using System;
+using RallyNow.Service.Utils;
 using RestSharp;
 
-namespace RallyNow.Utils
+namespace RallyNow.Service.Utils
 {
     public class RestfulClient :  IRestfulClient
     {

@@ -1,4 +1,6 @@
-﻿namespace RallyNow.Utils
+﻿using RallyNow.Service.Utils;
+
+namespace RallyNow.Service.Utils
 {
     public interface IRestfulClient
     {

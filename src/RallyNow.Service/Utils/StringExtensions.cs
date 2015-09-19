@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
-namespace RallyNow.Utils
+namespace RallyNow.Service.Utils
 {
     public static class StringExtensions
     {

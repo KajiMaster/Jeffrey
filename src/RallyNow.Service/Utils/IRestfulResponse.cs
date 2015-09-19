@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace RallyNow.Utils
+namespace RallyNow.Service.Utils
 {
     public interface IRestfulResponse
     {

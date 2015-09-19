@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 
-namespace zTest
+namespace RallyNow.Service
 {
-    [TestFixture]
-    public class RestfulClientTest
+    public class Class1
     {
     }
 }

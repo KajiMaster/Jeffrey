@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Net;
 using Newtonsoft.Json;
+using RallyNow.Service.Utils;
 using RestSharp;
 
-namespace RallyNow.Utils
+namespace RallyNow.Service.Utils
 {
     public class RestfulResponse : IRestfulResponse
     {

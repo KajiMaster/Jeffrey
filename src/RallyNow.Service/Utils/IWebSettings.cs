@@ -1,4 +1,4 @@
-﻿namespace RallyNow.Utils
+﻿namespace RallyNow.Service.Utils
 {
     public interface IWebSettings
     {
