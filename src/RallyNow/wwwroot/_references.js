@@ -4,4 +4,5 @@
 /// <reference path="app/controllers/activitiesController.js" />
 /// <reference path="app/services/activitiesServices.js" />
 /// <reference path="app/services/factory.js" />
+/// <reference path="app/services/moxtraservices.js" />
 /// <reference path="js/site.js" />
