@@ -28,7 +28,8 @@
          * @type {{authenticate1: authenticate1, authenticate2: authenticate2}}
          */
         var moxtraServiceInterface = {
-            authenticate: authenticate
+            authenticate: authenticate,
+            initialize: initialize
         };
         return moxtraServiceInterface;
 
@@ -63,6 +64,7 @@
             }).then(
                 function (success)
                 {
+                    success.moxtraUserId = rtUserId;
                     deferred.resolve(success);
                 },
                 function (failure)
@@ -71,6 +73,21 @@
                 }
             );
             return deferred.promise;
+        }
+
+        function initialize(moxtraAccessData)
+        {
+            var options = {
+                mode: "sandbox", //for production environment change to "production"
+                client_id: moxtraAccessData.moxtraUserId,
+                access_token: moxtraAccessData.access_token, //valid access token from user authentication
+                invalid_token: function (event)
+                {
+                    alert("Access Token expired for session id: " + event.session_id);
+                }
+            };
+
+            Moxtra.init(options);
         }
     }
 

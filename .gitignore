@@ -72,6 +72,10 @@ DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
 
+# DNX
+project.lock.json
+artifacts/
+
 # Click-Once directory
 publish
 
