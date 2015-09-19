@@ -2,6 +2,10 @@
   "AppSettings": {
     "SiteTitle": "RallyNow"
   },
+  "Auth": {
+    "ClientID": "e5ac6afc-b9e8-4c7a-8097-763445448c26",
+    "ClientSecret":  "d6VydxweWgnRweBPPy5pwpU"  
+  },
   "Data": {
     "DefaultConnection": {
       "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-RallyNow-e9651ffe-ae36-4261-897d-8c8dcc57609a;Trusted_Connection=True;MultipleActiveResultSets=true"

@@ -132,7 +132,7 @@ namespace RallyNow.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult LogOff()
         {
-            _signInManager.SignOut();
+            //_signInManager.SignOut();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
@@ -445,7 +445,7 @@ namespace RallyNow.Controllers
             if (!_databaseChecked)
             {
                 _databaseChecked = true;
-                context.Database.AsRelational().ApplyMigrations();
+                //context.Database.AsRelational().ApplyMigrations();
             }
         }
 
