@@ -4,7 +4,8 @@
     angular.module('rtApp', [
         // Angular modules 
         'ngRoute',
-        'activitiesService'
+        'activitiesService',
+        'moxtraService'
 
         // Custom modules 
 
