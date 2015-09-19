@@ -25,7 +25,8 @@
     "Microsoft.Framework.Configuration.UserSecrets": "1.0.0-beta5",
     "Microsoft.Framework.Logging": "1.0.0-beta5",
     "Microsoft.Framework.Logging.Console": "1.0.0-beta5",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta5"
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta5",
+    "RestSharp": "105.2.3"
   },
 
   "commands": {

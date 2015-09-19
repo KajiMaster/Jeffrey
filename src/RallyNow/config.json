@@ -1,6 +1,7 @@
 {
   "AppSettings": {
-    "SiteTitle": "RallyNow"
+    "SiteTitle": "RallyNow",
+    "Moxtra-Endpoint":  "https://apisandbox.moxtra.com/v1/"
   },
   "Data": {
     "DefaultConnection": {
