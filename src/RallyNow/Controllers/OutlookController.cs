@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Http;
 using Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Framework.Configuration;
 
 namespace RallyNow.Controllers
 {
@@ -12,17 +13,26 @@ namespace RallyNow.Controllers
     {
         // The required scopes for our app
         private static string[] scopes = { "https://outlook.office.com/mail.read" };
+        private IConfiguration _configuration;
+
+        public string ClientId => _configuration.GetSection("Authentication")["ClientID"];
+        public string ClientSecret => _configuration.GetSection("Authentication")["ClientSecret"];
+
+
+        public OutlookController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public async Task<IActionResult> SignIn()
         {
             string authority = "https://login.microsoftonline.com/common";
-            string clientId = ConfigurationManager.AppSettings["Auth:ClientID"];
             AuthenticationContext authContext = new AuthenticationContext(authority);
 
             Uri redirectUri = new Uri(Url.Action("Authorize", "Outlook", null, "http"));
 
             // Generate the parameterized URL for Azure signin
-            Uri authUri = await authContext.GetAuthorizationRequestUrlAsync(scopes, null, clientId,
+            Uri authUri = await authContext.GetAuthorizationRequestUrlAsync(scopes, null, ClientId,
                 redirectUri, UserIdentifier.AnyUser, null);
 
             // Redirect the browser to the Azure signin page
@@ -32,18 +42,16 @@ namespace RallyNow.Controllers
         public async Task<IActionResult> Authorize()
         {
             // Get the 'code' parameter from the Azure redirect
-            string authCode = Request.QueryString.ToString();
+            string authCode = Request.Query["code"];
 
             string authority = "https://login.microsoftonline.com/common";
-            string clientId = System.Configuration.ConfigurationManager.AppSettings["ida:ClientID"];
-            string clientSecret = System.Configuration.ConfigurationManager.AppSettings["ida:ClientSecret"];
             AuthenticationContext authContext = new AuthenticationContext(authority);
 
             // The same url we specified in the auth code request
             Uri redirectUri = new Uri(Url.Action("Authorize", "Outlook", null, "http"));
 
             // Use client ID and secret to establish app identity
-            ClientCredential credential = new ClientCredential(clientId, clientSecret);
+            ClientCredential credential = new ClientCredential(ClientId, ClientSecret);
 
             try
             {
@@ -55,7 +63,7 @@ namespace RallyNow.Controllers
                 Context.Session.SetString("access_token", authResult.Token);
 
                 // Try to get user info
-                Context.Session.SetString("user_email", GetUserEmail(authContext, clientId));
+                Context.Session.SetString("user_email", GetUserEmail(authContext, ClientId));
 
                 return Content("Access Token: " + authResult.Token);
             }

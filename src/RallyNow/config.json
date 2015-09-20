@@ -2,9 +2,9 @@
   "AppSettings": {
     "SiteTitle": "RallyNow"
   },
-  "Auth": {
+  "Authentication": {
     "ClientID": "e5ac6afc-b9e8-4c7a-8097-763445448c26",
-    "ClientSecret":  "d6VydxweWgnRweBPPy5pwpU"  
+    "ClientSecret": "apEw2cAEhkgywsRasWhoJch"  
   },
   "Data": {
     "DefaultConnection": {
