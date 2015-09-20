@@ -2,6 +2,9 @@
 [Bb]in/
 [Oo]bj/
 
+project.lock.json
+_references.js
+
 # mstest test results
 TestResults
 

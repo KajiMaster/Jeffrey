@@ -15,11 +15,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Routing;
 using Microsoft.Data.Entity;
+using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
-using Microsoft.Framework.Runtime;
 using RallyNow.Models;
 using RallyNow.Services;
 
@@ -29,6 +29,7 @@ namespace RallyNow
     {
         public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
+
             // Setup configuration sources.
 
             var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
@@ -61,6 +62,8 @@ namespace RallyNow
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSingleton(_=> Configuration);
+
             // Configure the options for the authentication middleware.
             // You can add options for Google, Twitter and other middleware as shown below.
             // For more information see http://go.microsoft.com/fwlink/?LinkID=532715
@@ -75,6 +78,9 @@ namespace RallyNow
                 options.ClientId = Configuration["Authentication:MicrosoftAccount:ClientId"];
                 options.ClientSecret = Configuration["Authentication:MicrosoftAccount:ClientSecret"];
             });
+
+            services.AddSession();
+            services.AddCaching();
 
             // Add MVC services to the services container.
             services.AddMvc();
@@ -100,7 +106,6 @@ namespace RallyNow
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
-                app.UseErrorPage(ErrorPageOptions.ShowAll);
                 app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
             }
             else
@@ -122,6 +127,8 @@ namespace RallyNow
             // app.UseGoogleAuthentication();
             // app.UseMicrosoftAccountAuthentication();
             // app.UseTwitterAuthentication();
+
+            app.UseSession();
 
             // Add MVC to the request pipeline.
             app.UseMvc(routes =>
