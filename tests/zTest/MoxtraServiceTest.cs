@@ -22,7 +22,6 @@ namespace zTest
         [Test]
         public void Should_DoStuff()
         {
-            Console.Out.WriteLine(DateTime.Now.Ticks);
             _service.Login();
         }
     }

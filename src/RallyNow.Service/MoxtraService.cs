@@ -20,18 +20,14 @@ namespace RallyNow.Service
             parameters.Add("client_id", "hhCr3RxKPmo");
             parameters.Add("client_secret", "mI-Dc2ftJ0w");
             parameters.Add("grant_type", "http://www.moxtra.com/auth_uniqueid");
-            parameters.Add("uniqueid", "Jeffrey@Rallyteam.com");
+            parameters.Add("uniqueid", "jonas.avellana@Rallyteam.com");
             parameters.Add("timestamp", (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalMilliseconds.ToString());
             parameters.Add("firstname", "Jeffrey");
             parameters.Add("lastname", "Rallyteam");
             var response = _client.FormPost("oauth/token", parameters);
             Console.Out.WriteLine(response.Content);
         }
-
-        private class Moxtra
-        {
-            public string ClientId => "hhCr3RxKPmo";
-            public string ClientSecret => "mI-Dc2ftJ0w";
-        }
+            
     }
 }
+
