@@ -11,7 +11,7 @@
         $scope.title = 'activitiesController';
 
         // HACK: need an unqiue user id to authenticate with moxtra here
-        moxtraDataService.authenticate('hello').then(
+        moxtraDataService.authenticate('someUniqueUserId').then(
             function(success) {
                 $log.info("moxtra authenticated successfully: ", success);
 

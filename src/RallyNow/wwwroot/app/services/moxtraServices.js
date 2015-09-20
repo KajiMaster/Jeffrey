@@ -79,7 +79,7 @@
         {
             var options = {
                 mode: "sandbox", //for production environment change to "production"
-                client_id: moxtraAccessData.moxtraUserId,
+                client_id: MOXTRA_CONFIG.CLIENT_ID,
                 access_token: moxtraAccessData.access_token, //valid access token from user authentication
                 invalid_token: function (event)
                 {
